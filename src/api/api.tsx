@@ -1,8 +1,15 @@
-import { Component } from "react";
+import { Component, createContext, PropsWithChildren } from "react";
 
+type Props = PropsWithChildren<{}>;
 
+class ApiContextState {
+    apiToken = '';
+    login = () => {};
+}
 
-class ApiProvider extends Component {
+export const ApiContext = createContext(new ApiContextState());
+
+export class ApiProvider extends Component<Props, ApiContextState> {
     constructor(props: {}) {
         super(props);
 
@@ -12,6 +19,16 @@ class ApiProvider extends Component {
                 console.log('Tried to login');
             }
         }
+    }
+
+    render() {
+        return <ApiContext.Provider value={this.state}>
+
+        { this.props.children }
+
+        </ApiContext.Provider>
+        
+        
     }
 }
 

@@ -13,7 +13,7 @@ export default class LoginBox extends Component{
         event.preventDefault();
 
         // TODO: login()-nek state paraméter
-        this.context.login();
+        this.context.login('testuser', 'testpass');
 
         // Valahogy hívjuk meg a login függvényt
     }

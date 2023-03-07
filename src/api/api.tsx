@@ -5,7 +5,8 @@ type Props = PropsWithChildren<{}>;
 class ApiContextState {
     apiToken = '';
     currentUser? : string;
-    login = () => {};
+    networkError = false;
+    login = async (email: string, password: string) => {};
     logout = () => {};
 }
 
@@ -17,8 +18,10 @@ export class ApiProvider extends Component<Props, ApiContextState> {
 
         this.state = {
             apiToken: '',
-            login: () => {
+            networkError: false,
+            login: async (email, password) => {
                 console.log('Tried to login');
+                // fetch ...
                 this.setState({
                     currentUser: 'Test User',
                 })

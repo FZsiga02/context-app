@@ -4,7 +4,9 @@ type Props = PropsWithChildren<{}>;
 
 class ApiContextState {
     apiToken = '';
+    currentUser? : string;
     login = () => {};
+    logout = () => {};
 }
 
 export const ApiContext = createContext(new ApiContextState());
@@ -17,6 +19,14 @@ export class ApiProvider extends Component<Props, ApiContextState> {
             apiToken: '',
             login: () => {
                 console.log('Tried to login');
+                this.setState({
+                    currentUser: 'Test User',
+                })
+            },
+            logout: () => {
+                this.setState({
+                    currentUser: undefined,
+                })
             }
         }
     }

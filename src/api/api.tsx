@@ -7,7 +7,10 @@ class ApiProvider extends Component {
         super(props);
 
         this.state = {
-            
+            apiToken: '',
+            login: () => {
+                console.log('Tried to login');
+            }
         }
     }
 }
